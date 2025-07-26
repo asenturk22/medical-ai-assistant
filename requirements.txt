@@ -1,0 +1,6 @@
+pip install langchain
+pip install langchain-openai
+pip install openai
+pip install python-dotenv
+pip install fastapi
+pip install uvicorn
