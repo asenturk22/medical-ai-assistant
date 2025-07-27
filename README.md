@@ -4,7 +4,7 @@ AI-powered medical assistant chatbot built with LangChain and OpenAI for healthc
 
 ## 📋 Proje Açıklaması
 
-Bu projede kullanıcıların sağlık ile ilgili sorularını anlayan ve yanıtlayan GPT tabanlı bir doktor asistanı chatbot'u geliştirilmektedir. Sistem kullanıcının yaşını ve adını dikkate alarak kişiselleştirilmiş cevaplar üretir ve mesaj geçmişini hatırlayarak diyalogu sürdürür.
+Bu projede kullanıcıların sağlık ile ilgili sorularını anlayan ve yanıtlayan GPT tabanlı bir doktor asistanı chatbot'u geliştirilmektedir. Sistem kullanıcının yaşını ve adını dikkate alarak kişiselleştirilmiş cevaplar üretir ve mesaj geçmişini hatırlayarak diyaloğu sürdürür.
 
 ## 🎯 Proje Hedefleri
 
@@ -18,7 +18,7 @@ Bu projede kullanıcıların sağlık ile ilgili sorularını anlayan ve yanıtl
 ### ✅ Aşama 1: Terminal Uygulaması (Mevcut)
 Komut satırından çalışan temel chatbot
 
-### 🔄 Aşama 2: Web Servisi (Planlanan)
+### 🔄 Aşama 2: Web Servisi (Mevcut)
 FastAPI tabanlı REST API servisi
 
 ### 📱 Aşama 3: Client Uygulaması (Planlanan)
@@ -29,9 +29,9 @@ Web arayüzü ile kullanıcı dostu interface
 - **LangChain**: LLM kütüphanesi, prompt yönetimi ve memory sistemi
 - **OpenAI GPT-3.5 Turbo**: Ana dil modeli
 - **Python-dotenv**: Çevre değişkenleri yönetimi
-- **FastAPI**: Web API framework (gelecek aşamalar için)
-- **Uvicorn**: ASGI server (gelecek aşamalar için)
-
+- **FastAPI**: Web API framework 
+- **Uvicorn**: ASGI server 
+    
 ## 📦 Kurulum
 
 ### Gereksinimler
@@ -74,17 +74,57 @@ Ahmet: Baş ağrım var, ne yapmalıyım?
 Doktor Asistanı: Merhaba Ahmet, 35 yaşında bir yetişkin olarak baş ağrınız için...
 ```
 
+### FastAPI Web Servisi
+
+```bash
+uvicorn doctor_assistant_api:app --reload
+```
+
+Servis başladıktan sonra:
+
+- API Documentation: http://127.0.0.1:8000/docs (Swagger UI)
+
+### API Kullanım Örneği
+
+Request:
+
+```json
+{
+  "name": "Ahmet",
+  "age": 35,
+  "message": "Baş ağrım var, ne yapmalıyım?"
+}
+```
+
+Response:
+
+```json
+{
+  "response": "Merhaba Ahmet, 35 yaşında bir yetişkin olarak baş ağrınız için..."
+}
+```
+
+
+
 ## 🧠 Sistem Özellikleri
 
 ### Memory Sistemi
 - Konuşma geçmişini hatırlar
 - Kullanıcı bilgilerini (isim, yaş) korur
 - Bağlamsal cevaplar üretir
+- Session bazlı hafıza yönetimi
 
 ### Kişiselleştirme
 - Yaşa uygun tavsiyeler
 - İsimle hitap etme
-- Bireysel sağlık durumu dikkate alma
+- Bir
+
+### API Özellikleri
+RESTful API tasarımı
+Pydantic ile veri validasyonu
+Swagger UI dokümantasyonu
+Asenkron request handling
+Hata yönetimi ve HTTP status kodları
 
 ### Güvenlik
 - Dikkatli ve nazik tavsiyeler
@@ -109,6 +149,12 @@ medical-ai-assistant/
 - **Temperature**: 0.7 (yaratıcılık vs güvenilirlik dengesi)
 - **Memory**: ConversationBufferMemory (tam konuşma geçmişi)
 
+### FastAPI Ayarları
+
+- Host: 127.0.0.1
+- Port: 8000
+- Reload: Geliştirme modunda otomatik yeniden yükleme
+
 ### Prompt Sistemi
 ```python
 intro = (
@@ -117,6 +163,16 @@ intro = (
     "Yaşına uygun dikkatli ve nazik tavsiyeler ver; ismiyle hitap et." 
 )
 ```
+
+## 🧪 Test
+
+### Swagger UI ile Test
+
+- `uvicorn doctor_assistant_api:app --reload` ile servisi başlatın
+- http://127.0.0.1:8000/docs adresine gidin
+- "Try it out" butonuna tıklayın
+- Request body'yi doldurun ve "Execute" yapın
+
 
 ## 🔮 Gelecek Planları
 
