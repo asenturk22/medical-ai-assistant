@@ -15,14 +15,17 @@ Bu projede kullanıcıların sağlık ile ilgili sorularını anlayan ve yanıtl
 
 ## 🏗️ Proje Aşamaları
 
-### ✅ Aşama 1: Terminal Uygulaması (Mevcut)
+### ✅ Aşama 1: Terminal Uygulaması (Tamamlandı)
 Komut satırından çalışan temel chatbot
 
-### 🔄 Aşama 2: Web Servisi (Mevcut)
+### ✅ Aşama 2: Web Servisi (Tamamlandı)
 FastAPI tabanlı REST API servisi
 
-### 📱 Aşama 3: Client Uygulaması (Planlanan)
+### ✅ Aşama 3: Client Uygulaması (Tamamlandı)
 Web arayüzü ile kullanıcı dostu interface
+
+### 📱 Aşama 4: Web Arayüzü (Planlanan)
+HTML/CSS/JavaScript ile kullanıcı dostu web interface
 
 ## 🛠️ Teknolojiler
 
@@ -52,7 +55,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ## 🚀 Kullanım
 
-### Terminal Uygulaması
+### Terminal  Uygulaması
 ```bash
 python doctor_assistant_terminal.py
 ```
@@ -104,6 +107,25 @@ Response:
 }
 ```
 
+### Terminal Client Uygulaması
+
+```bash
+# Terminal 1: API sunucusunu başlatın
+uvicorn doctor_assistant_api:app --reload
+
+# Terminal 2: Client'ı çalıştırın
+python client_test.py
+```
+
+Program başladığında:
+
+- Adınızı girin
+- Yaşınızı girin
+- API sunucusu ile sohbet edin
+- Çıkmak için quit yazın
+
+Not: Client çalıştırmadan önce FastAPI sunucusunun çalışıyor olması gerekir:
+
 
 
 ## 🧠 Sistem Özellikleri
@@ -117,7 +139,7 @@ Response:
 ### Kişiselleştirme
 - Yaşa uygun tavsiyeler
 - İsimle hitap etme
-- Bir
+- Bireysel sağlık durumu dikkate alma
 
 ### API Özellikleri
 RESTful API tasarımı
@@ -135,11 +157,13 @@ Hata yönetimi ve HTTP status kodları
 
 ```
 medical-ai-assistant/
-├── doctor_assistant_terminal.py    # Ana terminal uygulaması
+├── doctor_assistant_terminal.py    # Standalone terminal uygulaması
+├── doctor_assistant_api.py         # FastAPI web servisi
+├── client_test.py                  # Terminal API client
 ├── .env                           # API anahtarları (git'e eklenmez)
 ├── .gitignore                     # Git ignore dosyası
 ├── README.md                      # Bu dosya
-└── requirements.txt               # Python bağımlılıkları (yakında)
+└── requirements.txt               # Python bağımlılıkları 
 ```
 
 ## ⚙️ Konfigürasyon
